@@ -1,36 +1,28 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 func main() {
 
-	input := []string{"flower", "flow", "flight"}
+	input := []string{"f", "flow", "flight"}
 	MainFunc(input)
 }
 
-func MainFunc(strs []string) string {
-	shortestWord := strs[0]
+func MainFunc(s []string) string {
+	fmt.Println(s)
+	pref := s[0]
+	fmt.Println(pref)
 
-	// find the shortest words
-	for _, v := range strs {
-		if len(v) < len(shortestWord) {
-			shortestWord = v
+	for i := 1; i < len(s); i++ {
+		for !strings.HasPrefix(s[i], pref) {
+			pref = pref[:len(pref)-1]
+			fmt.Println(pref)
 		}
+		fmt.Println(s[i])
 	}
-
-	// map all words count
-	mp := map[string]int{}
-	for _, v := range strs {
-		for i := 1; i <= len(shortestWord); i++ {
-			mp[v[:i]]++
-		}
-	}
-
-	lcp := ""
-	for k, v := range mp {
-		if len(k) > len(lcp) && v >= len(strs) {
-			lcp = k
-		}
-	}
-
-	return lcp
-
+	fmt.Println(pref)
+	return pref
 }
