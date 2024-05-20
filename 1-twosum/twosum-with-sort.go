@@ -21,6 +21,10 @@ func twoSumWithSort(nums []int, target int) []int {
 	return res
 }
 
+func findTwo(nums []int, t int) []int {
+	return nums
+}
+
 func sort(nums []int) []int {
 	fmt.Println("sort started")
 	i := 0
