@@ -14,15 +14,17 @@ func main() {
 }
 
 func isPalindrome(x int) bool {
-	fmt.Println(x)
 	toStr := strconv.Itoa(x)
 	arrStr := []string{}
 	for _, v := range toStr {
 		arrStr = append(arrStr, string(v))
 	}
-	fmt.Println(arrStr)
 
-	for idx := range arrStr {
+	if len(arrStr) == 1 {
+		return false
+	}
+
+	for idx := range arrStr[:len(arrStr)/2] {
 		if arrStr[idx] != arrStr[len(arrStr)-1-idx] {
 			return false
 		}
